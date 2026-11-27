@@ -1,0 +1,64 @@
+/* Tokens do Alquimia Design System (ADS) da Farmarcas.
+   Valores copiados do pacote tokens/*.css do ADS. O que não existe lá está marcado "adaptado". */
+:root {
+  --neutral-dark-900: #061938;
+  --neutral-dark-800: #172b4d;
+  --neutral-dark-500: #42526e;
+  --neutral-mid-300: #5e6c84;
+  --neutral-mid-200: #6b778c;
+  --neutral-light-30: #e5e8eb;
+  --neutral-light-20: #f0f3f6;
+  --neutral-light-10: #fafbfc;
+  --neutral-light-00: #ffffff;
+
+  --system-25: #e4f2ff;
+  --system-100: #89c9ff;
+  --system-500: #006ff7;
+  --system-800: #074ac6;
+  --system-900: #00389e;
+
+  --func-warning-300: #df0028;
+
+  --color-primary: var(--system-500);
+  --color-primary-hover: var(--system-800);
+  --color-primary-pressed: var(--system-900);
+  --color-primary-soft: var(--system-25);
+  --color-primary-disabled: var(--system-100);
+
+  --text-default: #1d2433;
+  --text-strong: var(--neutral-dark-900);
+  --text-secondary: var(--neutral-dark-500);
+  /* Adaptado: o ADS usa --neutral-mid-100 (#7a869a) no texto suave, que dá só 3,7:1 no branco.
+     Trocado por --neutral-mid-300 (#5e6c84, 5,3:1) para cumprir 4,5:1. */
+  --text-soft: var(--neutral-mid-300);
+  --text-inverse: var(--neutral-light-00);
+  --text-danger: var(--func-warning-300);
+
+  --surface-page: var(--neutral-light-10);
+  --surface-card: var(--neutral-light-00);
+  --surface-subtle: var(--neutral-light-20);
+
+  --border-subtle: var(--neutral-light-30);
+  /* Adaptado: bordas de controle precisam de 3:1; --border-default do ADS (#c1c7d0) tem 1,8:1. */
+  --border-control: var(--neutral-mid-200);
+
+  --font-sans: "Inter", "Helvetica Neue", Arial, sans-serif;
+
+  --space-quark: 4px;
+  --space-nano: 8px;
+  --space-xxxs: 16px;
+  --space-xxs: 24px;
+  --space-xs: 32px;
+
+  --radius-button: 4px;
+  --radius-input: 6px;
+  --radius-card: 8px;
+  --radius-pill: 999px;
+
+  --shadow-0: 0 2px 4px -1px rgba(179, 186, 197, 0.75);
+  --shadow-2: 0 4px 24px rgba(0, 0, 0, 0.16);
+  --shadow-3: 0 8px 32px rgba(0, 0, 0, 0.16);
+
+  --overlay: rgba(6, 25, 56, 0.4);
+  --focus-ring: 0 0 0 2px var(--system-25);
+}
