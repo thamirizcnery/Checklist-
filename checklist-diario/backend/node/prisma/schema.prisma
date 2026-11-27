@@ -1,0 +1,38 @@
+generator client {
+  provider             = "prisma-client"
+  output               = "../src/generated/prisma"
+  moduleFormat         = "esm"
+  importFileExtension  = "js"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+// PK: bigint identity (app de uso individual, IDs gerados só no banco; database/DATABASE.md).
+// Exclusão lógica em Activity (deleted_at): o histórico dos dias passados nunca se perde.
+// O índice parcial de posição vive no SQL da migration (o Prisma não declara índice parcial).
+model Activity {
+  id        BigInt          @id @default(autoincrement())
+  name      String
+  position  Int
+  deletedAt DateTime?       @map("deleted_at") @db.Timestamptz(3)
+  createdAt DateTime        @default(now()) @map("created_at") @db.Timestamptz(3)
+  updatedAt DateTime        @updatedAt @map("updated_at") @db.Timestamptz(3)
+  checks    ActivityCheck[]
+
+  @@map("activities")
+}
+
+// Uma linha por atividade feita em um dia (America/Sao_Paulo). Desmarcar apaga a linha.
+model ActivityCheck {
+  id         BigInt   @id @default(autoincrement())
+  activityId BigInt   @map("activity_id")
+  day        DateTime @db.Date
+  checkedAt  DateTime @default(now()) @map("checked_at") @db.Timestamptz(3)
+  activity   Activity @relation(fields: [activityId], references: [id], onDelete: Restrict)
+
+  @@unique([activityId, day])
+  @@index([day])
+  @@map("activity_checks")
+}
